@@ -1,0 +1,22 @@
+application: wordsofmullae
+version: 1
+runtime: python27
+api_version: 1
+threadsafe: false
+
+handlers:
+- url: /audio
+  static_dir: audio
+  mime_type: audio/mp3
+- url: /img
+  static_dir: img
+- url: /data
+  static_dir: data
+- url: /js
+  static_dir: js
+- url: /.*
+  script: wom.application
+
+libraries:
+- name: webapp2
+  version: latest
