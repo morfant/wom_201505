@@ -6,6 +6,7 @@ import webapp2
 import random
 import glob, os
 import re
+import time
 
 from google.appengine.api import users
 from google.appengine.ext import ndb
@@ -50,20 +51,26 @@ LIST_DB_T1_PAGE_HTML = """\
         #dblist {
             position: relative;
             left: 50px;
-            font-size: 13px;
+            font-size: 15px;
             }
         #imgs {
             position: relative;
             top: 50px;
             left: 50px;
         }
+        div#aimg{
+            position: relative;
+            margin-top: 150px;
+        }
+
 
 
     </style>
 
     </head>
-    <body>
-
+    <body id="t1_db_body">
+    <script src="js/dbload.js"></script>
+    
     <!-- loading animation -->
     <div class="host">
         <div class="loading loading-0"></div>
@@ -1277,7 +1284,8 @@ class ListDB_T1(webapp2.RequestHandler) :
 
         self.response.write("<div id=\"dblist\">")
         self.response.write("<br>")
- 
+
+        skt = time.time()
         # list kor DB
         for i in range(0, lenOfKORWords):
             womquery = WOM.query(WOM.idx == i)
@@ -1292,9 +1300,16 @@ class ListDB_T1(webapp2.RequestHandler) :
 #                print "- " + resultContentList[j] + "\n"
                 self.response.write("- " + resultContentList[j] + "<br>")
 
-            self.response.write("<br>")
-      
+            print ("koridx: ", i)
 
+            self.response.write("<br>")
+        ekt = time.time()
+        korDur = ekt - skt
+        print ("korDur: ", korDur)
+
+        
+
+        est = time.time()
         # list eng DB
         for i in range(0, lenOfENGWords):
             womquery = WOM_ENG.query(WOM_ENG.idx == i)
@@ -1310,22 +1325,30 @@ class ListDB_T1(webapp2.RequestHandler) :
 #                print "- " + resultContentList[j] + "\n"
                 self.response.write("- " + resultContentList[j] + "<br>")
 
+            print ("engidx: ", i)
             self.response.write("<br>")
 
+        eet = time.time()
+        engDur = eet - ekt
+        print ("engDur: ", engDur)
         self.response.write("</div>")
+         
  
- 
+        # list imgs in DB
         self.response.write("<div id=\"imgs\">")
         self.response.write("<br>")
-        
-        # list imgs in DB
+       
+        ist = time.time()
         for i in range(1, IMG_NUMBER) :
             self.response.out.write('<br>')
-            self.response.out.write('<div align = "left"> <img src=/img/' + str(i) + '.png height = "400" width = "400"/></div>')
+            self.response.out.write('<div id=\"aimg\" align = "left"> <img src=/img/' + str(i) + '.png height = "400" width = "400"/></div>')
             self.response.out.write('<br>')
         
         self.response.write("</div>")
-        
+       
+        iet = time.time()
+        imgDur = iet - ist
+        print ("imgDur: ", imgDur)
         self.response.out.write(LIST_DB_T1_PAGE_HTML)
 
 
