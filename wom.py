@@ -552,11 +552,16 @@ T1_PAGE_HTML = """\
                 한국어와 영어 입력이 가능합니다.
                 <br>
                 한국어와 영어(숫자, 특수문자 포함)를 함께 사용하는 경우에는 이미지가 출력 됩니다.
+                <br><br>
+                Database는 <strong><i>‘구청 행정서식상의 단어 - 해당 단어의 포털사이트 검색 결과’</strong></i>의 조합으로 이루어져 있습니다.
                 </p>
                 <p>
                 KOREAN and ENGLISH are both available.
                 <br>
                 If you enter words in KOREAN and ENGLISH(Numbers and special characters are included) at the same time,<br>random image will be displayed.
+                <br><br>
+                Database is composed of <b><i>words</b></i> from administration template  used by korean ward office and <b><i>web search result</b></i> about it.
+
                 </p>
 
             </div>
@@ -1076,8 +1081,11 @@ T3_PAGE_HTML = """\
                 </p>
             </div>
 
-            <div id="comment" style="position: relative; left:690px; bottom: 500px; width: 260px" align="right">
+            <div id="comment" style="position: relative; left:690px; bottom: 500px; width: 270px" align="right">
             <hr>
+            <p>PLAY 버튼을 누르면,<br>해당되는 다양한 소리가 랜덤하게 재생되어집니다.</p>
+            <p>If you press ‘PLAY’,<br>an audio file from selection will be played randomly.</p>
+            <br>
             <p>*&nbsp</p>
                 <p style="font-size: 10px;">
                 2014 독일 프랑크푸르트 도서전을 관람하기 위해
@@ -1165,7 +1173,8 @@ PLAYSOUND_PAGE_HTML = """\
                 한국어와 영어 입력이 가능합니다.
                 <br>
                 한국어와 영어(숫자, 특수문자 포함)를 함께 사용하는 경우에는 이미지가 출력 됩니다.
-                </p>
+                                </p>
+                <br>
                 <p>
                 KOREAN and ENGLISH are both available.
                 <br>
