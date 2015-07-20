@@ -1262,6 +1262,11 @@ class SetupDB(webapp2.RequestHandler) :
 
 
 class ListDB_T1(webapp2.RequestHandler) :
+    @ndb.tasklet
+    def cb(number) :
+        word = yield WOM.query_async(WOM.idx == number)
+        raise ndb.Return('hello %s' % (word.fetch(1)[0].keyword))
+
     def get(self) :
 
         lenOfKORWords = ""
@@ -1298,6 +1303,7 @@ class ListDB_T1(webapp2.RequestHandler) :
         # list kor DB
         for i in range(0, lenOfKORWords):
             womquery = WOM.query(WOM.idx == i)
+            #queryReturn = womquery.fetch(1)
             queryReturn = womquery.fetch(1)
 #            print queryReturn
 #            print queryReturn[0].keyword + " : "
