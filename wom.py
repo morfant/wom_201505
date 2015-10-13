@@ -552,15 +552,16 @@ T1_PAGE_HTML = """\
                 한국어와 영어 입력이 가능합니다.
                 <br>
                 한국어와 영어(숫자, 특수문자 포함)를 함께 사용하는 경우에는 이미지가 출력 됩니다.
-                <br><br>
-                Database는 <strong><i>‘구청 행정서식상의 단어 - 해당 단어의 포털사이트 검색 결과’</strong></i>의 조합으로 이루어져 있습니다.
+                <br>
+                Database는 <strong><i>‘구청 행정서식상의 단어 - 해당 단어의 포털사이트 검색 결과’</strong></i>의 조합과 <strong><i>'재활치료와 관련된 스케치'</strong></i>로 이루어져 있습니다.
                 </p>
                 <p>
                 KOREAN and ENGLISH are both available.
                 <br>
-                If you enter words in KOREAN and ENGLISH(Numbers and special characters are included) at the same time,<br>random image will be displayed.
-                <br><br>
-                Database is composed of <b><i>words</b></i> from administration template  used by korean ward office and <b><i>web search result</b></i> about it.
+                If you enter words in KOREAN and ENGLISH(Numbers and special characters are included) at the same time,
+                random image will be displayed.
+                <br>
+                Database is composed of <b><i>words</b></i> from administration template  used by korean ward office and <b><i>sketches</b></i> of rehabilitation process.
 
                 </p>
 
@@ -1430,33 +1431,43 @@ class FindDB(webapp2.RequestHandler) :
                             result = randDBOutInMatchingWord(WOM, word)
                             self.response.write('<div align = "center", padding-top: 50px>' \
                             + result + '</div>')
+                            """
                             resultEng = randDBOutInRandomWord(WOM_ENG, lenOfENGWords)
                             self.response.write('<div align = "center", padding-top: 50px>' \
                             + resultEng + '</div>')
+                            """
 
                     else :
                         resultSentence = randDBOutInRandomWord(WOM, lenOfKORWords)
                         self.response.write('<div align = "center", padding-top: 50px>' \
                         + resultSentence + '</div>')
+                        
+                        """
                         resultSentence = randDBOutInRandomWord(WOM_ENG, lenOfENGWords)
                         self.response.write('<div align = "center", padding-top: 50px>' \
                         + resultSentence + '</div>')
+                        """
 
 
                 elif isKoreanToListResult == 1 : #All eng words
                     if isExactlyMatchToList(toFindstrList, StaticKeys.keys_ENG) and len(toFindstrList) == 1:
                         for word in toFindstrList: #split by space
-                            resultEng = randDBOutInRandomWord(WOM, lenOfKORWords)
-                            self.response.write('<div align = "center", padding-top: 50px>' \
-                            + resultEng + '</div>')
-                            result = randDBOutInMatchingWord(WOM_ENG, word)
+                            """
+                            result = randDBOutInRandomWord(WOM, lenOfKORWords)
                             self.response.write('<div align = "center", padding-top: 50px>' \
                             + result + '</div>')
+                            """
+
+                            resultEng = randDBOutInMatchingWord(WOM_ENG, word)
+                            self.response.write('<div align = "center", padding-top: 50px>' \
+                            + resultEng + '</div>')
 
                     else :
+                        """
                         resultSentence = randDBOutInRandomWord(WOM, lenOfKORWords)
                         self.response.write('<div align = "center", padding-top: 50px>' \
                         + resultSentence + '</div>')
+                        """
                         resultSentence = randDBOutInRandomWord(WOM_ENG, lenOfENGWords)
                         self.response.write('<div align = "center", padding-top: 50px>' \
                         + resultSentence + '</div>')
