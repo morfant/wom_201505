@@ -1676,16 +1676,21 @@ def isKoreanToWord(word) :
         if bool(re.search(r'(([^\x7f-\xfe])+)', word)) :
             #mixed
             print "The word is korean + english"
-            return 2 #kor + eng
+            return 2 #kor + eng - image
         else :
             #korean
             print "The word is korean"
-            return 0 #All kor
+            return 0 #All kor - not image
 
     else :
-        #english or number or special key...
-        print "The word is english"
-        return 1 #All eng
+        if bool(re.search('[^a-zA-Z]+', word)) :
+            print "Not pure Eng."
+            return 2 #image
+
+        else :
+            #pure english 
+            print "The word is only english"
+            return 1 #All eng - not image
 
 def isKoreanToList(wordList) :
     numOfWord = len(wordList)
