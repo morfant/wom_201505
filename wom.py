@@ -551,15 +551,14 @@ T1_PAGE_HTML = """\
                 <p>
                 한국어와 영어 입력이 가능합니다.
                 <br>
-                한국어와 영어(숫자, 특수문자 포함)를 함께 사용하는 경우에는 이미지가 출력 됩니다.
+                한국어와 영어를 함께 사용할 때, 혹은 숫자나 특수문자를 사용할 때 이미지가 출력됩니다.
                 <br>
                 Database는 <strong><i>‘구청 행정서식상의 단어 - 해당 단어의 포털사이트 검색 결과’</strong></i>의 조합과 <strong><i>'재활치료와 관련된 스케치'</strong></i>로 이루어져 있습니다.
                 </p>
                 <p>
                 KOREAN and ENGLISH are both available.
                 <br>
-                If you enter words in KOREAN and ENGLISH(Numbers and special characters are included) at the same time,
-                random image will be displayed.
+                In some cases in which either both KOREAN and ENGLISH is used together, or figure and special character is used, image will be printed out. 
                 <br>
                 Database is composed of <b><i>words</b></i> from administration template  used by korean ward office and <b><i>sketches</b></i> of rehabilitation process.
 
